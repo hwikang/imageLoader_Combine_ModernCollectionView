@@ -20,7 +20,7 @@ public struct GifNetwork: GifNetworkProtocol {
 
     public func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
         guard let apiKey = Bundle.main.apiKey else { return .failure(.requestFailed("API Key nil"))}
-
+        
         let url = baseURL
         let queryParams: [String : Any] = [
             "api_key": apiKey,

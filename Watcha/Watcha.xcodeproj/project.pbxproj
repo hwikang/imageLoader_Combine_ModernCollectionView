@@ -24,6 +24,9 @@
 		F809E10E2CB958C6001BE099 /* GifData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E10D2CB958C6001BE099 /* GifData.swift */; };
 		F809E1112CB95B5F001BE099 /* GifRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1102CB95B5F001BE099 /* GifRepository.swift */; };
 		F809E1132CB95C7D001BE099 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = F809E1122CB95C7D001BE099 /* Secret.plist */; };
+		F809E1162CB95E66001BE099 /* GifRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1152CB95E66001BE099 /* GifRepositoryProtocol.swift */; };
+		F809E1192CB95E9D001BE099 /* GifUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1182CB95E9D001BE099 /* GifUsecase.swift */; };
+		F809E11C2CB9609B001BE099 /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		F809E10D2CB958C6001BE099 /* GifData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifData.swift; sourceTree = "<group>"; };
 		F809E1102CB95B5F001BE099 /* GifRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRepository.swift; sourceTree = "<group>"; };
 		F809E1122CB95C7D001BE099 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Secret.plist; path = Watcha/Secret.plist; sourceTree = SOURCE_ROOT; };
+		F809E1152CB95E66001BE099 /* GifRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F809E1182CB95E9D001BE099 /* GifUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifUsecase.swift; sourceTree = "<group>"; };
+		F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,7 @@
 		F809E1012CB94F6A001BE099 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F809E11A2CB96090001BE099 /* UserDefaults */,
 				F809E10F2CB95B4F001BE099 /* Repository */,
 				F809E1022CB94F6E001BE099 /* Network */,
 			);
@@ -176,6 +183,8 @@
 		F809E1052CB9501A001BE099 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F809E1172CB95E93001BE099 /* Usecase */,
+				F809E1142CB95E56001BE099 /* RepositoryProtocol */,
 				F809E1062CB95020001BE099 /* Entity */,
 			);
 			path = Domain;
@@ -197,6 +206,30 @@
 				F809E1102CB95B5F001BE099 /* GifRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		F809E1142CB95E56001BE099 /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1152CB95E66001BE099 /* GifRepositoryProtocol.swift */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		F809E1172CB95E93001BE099 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1182CB95E9D001BE099 /* GifUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		F809E11A2CB96090001BE099 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,10 +370,13 @@
 				F809E10C2CB9510B001BE099 /* SearchResult.swift in Sources */,
 				F809E10A2CB950E5001BE099 /* GifNetwork.swift in Sources */,
 				F809E1042CB94FC2001BE099 /* NetworkManager.swift in Sources */,
+				F809E1192CB95E9D001BE099 /* GifUsecase.swift in Sources */,
 				F809E1082CB9502C001BE099 /* NetworkError.swift in Sources */,
 				F809E0CF2CB94D83001BE099 /* AppDelegate.swift in Sources */,
 				F809E10E2CB958C6001BE099 /* GifData.swift in Sources */,
+				F809E1162CB95E66001BE099 /* GifRepositoryProtocol.swift in Sources */,
 				F809E0D12CB94D83001BE099 /* SceneDelegate.swift in Sources */,
+				F809E11C2CB9609B001BE099 /* UserDefaultValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

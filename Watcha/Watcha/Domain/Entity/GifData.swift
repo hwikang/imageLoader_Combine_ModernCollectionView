@@ -13,6 +13,7 @@ struct GIFData: Decodable {
     let title: String
     let originalURLString: String
     let previewURLString: String
+    var isFavorite: Bool = false
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

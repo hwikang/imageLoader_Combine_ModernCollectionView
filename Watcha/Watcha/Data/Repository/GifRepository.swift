@@ -15,4 +15,20 @@ public struct GifRepository {
     func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
         await network.fetchDutchResult(query: query, limit: limit, offset: offset)
     }
+    
+    func getFavoriteIDList() -> [String] {
+        return UserDefaultValues.favoriteIDList ?? []
+    }
+    
+    func appendFavoriteID(id: String) {
+        var list = UserDefaultValues.favoriteIDList ?? []
+        list.append(id)
+        UserDefaultValues.favoriteIDList = list
+    }
+    
+    func removeFavoriteID(id: String) {
+        var list = UserDefaultValues.favoriteIDList ?? []
+        list.removeAll {$0 == id}
+        UserDefaultValues.favoriteIDList = list
+    }
 }
