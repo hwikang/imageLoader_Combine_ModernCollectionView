@@ -22,6 +22,8 @@
 		F809E10A2CB950E5001BE099 /* GifNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1092CB950E5001BE099 /* GifNetwork.swift */; };
 		F809E10C2CB9510B001BE099 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E10B2CB9510B001BE099 /* SearchResult.swift */; };
 		F809E10E2CB958C6001BE099 /* GifData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E10D2CB958C6001BE099 /* GifData.swift */; };
+		F809E1112CB95B5F001BE099 /* GifRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1102CB95B5F001BE099 /* GifRepository.swift */; };
+		F809E1132CB95C7D001BE099 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = F809E1122CB95C7D001BE099 /* Secret.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		F809E1092CB950E5001BE099 /* GifNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifNetwork.swift; sourceTree = "<group>"; };
 		F809E10B2CB9510B001BE099 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		F809E10D2CB958C6001BE099 /* GifData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifData.swift; sourceTree = "<group>"; };
+		F809E1102CB95B5F001BE099 /* GifRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRepository.swift; sourceTree = "<group>"; };
+		F809E1122CB95C7D001BE099 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Secret.plist; path = Watcha/Secret.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				F809E0D42CB94D83001BE099 /* Main.storyboard */,
 				F809E0D72CB94D84001BE099 /* Assets.xcassets */,
 				F809E0D92CB94D84001BE099 /* LaunchScreen.storyboard */,
+				F809E1122CB95C7D001BE099 /* Secret.plist */,
 				F809E0DC2CB94D84001BE099 /* Info.plist */,
 			);
 			path = Watcha;
@@ -153,6 +158,7 @@
 		F809E1012CB94F6A001BE099 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F809E10F2CB95B4F001BE099 /* Repository */,
 				F809E1022CB94F6E001BE099 /* Network */,
 			);
 			path = Data;
@@ -183,6 +189,14 @@
 				F809E10D2CB958C6001BE099 /* GifData.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		F809E10F2CB95B4F001BE099 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1102CB95B5F001BE099 /* GifRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F809E1132CB95C7D001BE099 /* Secret.plist in Resources */,
 				F809E0D82CB94D84001BE099 /* Assets.xcassets in Resources */,
 				F809E0DB2CB94D84001BE099 /* Base in Resources */,
 				F809E0D62CB94D83001BE099 /* Base in Resources */,
@@ -316,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F809E1112CB95B5F001BE099 /* GifRepository.swift in Sources */,
 				F809E0D32CB94D83001BE099 /* ViewController.swift in Sources */,
 				F809E1002CB94F42001BE099 /* Extension + Bundle.swift in Sources */,
 				F809E10C2CB9510B001BE099 /* SearchResult.swift in Sources */,

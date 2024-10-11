@@ -29,13 +29,13 @@ struct NetworkManager: NetworkManagerProtocol {
               var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             return .failure(NetworkError.urlError(urlString))
         }
-        debugPrint("URL - \(url)")
         
         components.queryItems = queryParams?.compactMap({ key, value in
             return URLQueryItem(name: key, value: "\(value)")
         })
 
         guard let url = components.url else { return .failure(.invalidQueryParams)}
+        debugPrint("URL - \(url)")
         
         do {
             var request = URLRequest(url: url)

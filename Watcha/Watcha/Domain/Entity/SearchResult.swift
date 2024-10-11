@@ -8,7 +8,8 @@
 import Foundation
 
 public struct SearchResult: Decodable {
-    let data: GIFData
+    let data: [GIFData]
+    let meta: MetaData
     let pagination: Pagination
 }
 
@@ -22,4 +23,10 @@ struct Pagination: Decodable {
     let totalCount: Int
     let count: Int
     let offset: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case totalCount = "total_count"
+        case count
+        case offset
+    }
 }

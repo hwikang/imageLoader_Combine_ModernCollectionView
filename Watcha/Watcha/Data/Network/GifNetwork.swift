@@ -11,7 +11,7 @@ public protocol GifNetworkProtocol {
     func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
 }
 
-public struct GifNetwork {
+public struct GifNetwork: GifNetworkProtocol {
     private let manager: NetworkManagerProtocol
     private let baseURL = "https://api.giphy.com/v1/gifs/search"
     init(manager: NetworkManagerProtocol) {
@@ -22,15 +22,13 @@ public struct GifNetwork {
         guard let apiKey = Bundle.main.apiKey else { return .failure(.requestFailed("API Key nil"))}
 
         let url = baseURL
-        let headers: [String : String] = [
-            "api_key": apiKey
-        ]
         let queryParams: [String : Any] = [
+            "api_key": apiKey,
             "q": query,
             "limit": limit,
             "offset": offset
         ]
-        return await manager.fetchData(urlString: url, httpMethod: .get, headers: headers, queryParams: queryParams)
+        return await manager.fetchData(urlString: url, httpMethod: .get, headers: nil, queryParams: queryParams)
         
     }
     
