@@ -7,6 +7,10 @@
 
 import Foundation
 
+public protocol GifNetworkProtocol {
+    func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
+}
+
 public struct GifNetwork {
     private let manager: NetworkManagerProtocol
     private let baseURL = "https://api.giphy.com/v1/gifs/search"
