@@ -29,6 +29,7 @@
 		F809E1242CBA2F24001BE099 /* GifCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1232CBA2F24001BE099 /* GifCellData.swift */; };
 		F809E1262CBA30E8001BE099 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1252CBA30E8001BE099 /* SearchTextField.swift */; };
 		F809E12A2CBA3815001BE099 /* Extension + UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1292CBA3815001BE099 /* Extension + UITextField.swift */; };
+		F809E1542CBA4572001BE099 /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1532CBA4572001BE099 /* GifCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		F809E1232CBA2F24001BE099 /* GifCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellData.swift; sourceTree = "<group>"; };
 		F809E1252CBA30E8001BE099 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		F809E1292CBA3815001BE099 /* Extension + UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITextField.swift"; sourceTree = "<group>"; };
+		F809E1532CBA4572001BE099 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				F809E1232CBA2F24001BE099 /* GifCellData.swift */,
+				F809E1532CBA4572001BE099 /* GifCollectionViewCell.swift */,
 				F809E1252CBA30E8001BE099 /* SearchTextField.swift */,
 			);
 			path = View;
@@ -406,6 +409,7 @@
 				F809E10C2CB9510B001BE099 /* SearchResult.swift in Sources */,
 				F809E10A2CB950E5001BE099 /* GifNetwork.swift in Sources */,
 				F809E1042CB94FC2001BE099 /* NetworkManager.swift in Sources */,
+				F809E1542CBA4572001BE099 /* GifCollectionViewCell.swift in Sources */,
 				F809E1192CB95E9D001BE099 /* GifUsecase.swift in Sources */,
 				F809E12A2CBA3815001BE099 /* Extension + UITextField.swift in Sources */,
 				F809E1212CBA1FE8001BE099 /* GifViewModel.swift in Sources */,
@@ -505,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -562,7 +566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -586,6 +590,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +618,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

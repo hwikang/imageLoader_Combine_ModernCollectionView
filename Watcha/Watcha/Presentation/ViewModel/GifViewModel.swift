@@ -18,6 +18,7 @@ public class GifViewModel: GifViewModelProtocol {
     private let limit = 20
     private var offset = 0
     private var pageFinished = false
+    private let query = CurrentValueSubject<String, Never>("")
     private let gifDataList = PassthroughSubject<[GIFData], Never>()
     private let errorMessage = PassthroughSubject<String,Never>()
     private var cancellables = Set<AnyCancellable>()
@@ -38,8 +39,10 @@ public class GifViewModel: GifViewModelProtocol {
     func transform(input: Input) -> Output {
       
         input.searchText
+            .filter({ !$0.isEmpty })
             .sink { [weak self] query in
                 guard let self = self else { return }
+                self.query.send(query)
                 offset = 0
                 Task {
                     await self.fetchGifData(query: query, offset: self.offset)
@@ -47,7 +50,8 @@ public class GifViewModel: GifViewModelProtocol {
             }.store(in: &cancellables)
         
         input.loadMore
-            .flatMap { input.searchText }
+            .map { [weak self] in self?.query.value }
+            .map({ $0 ?? "" })
             .sink { [weak self] query in
             guard let self = self else { return }
             offset += 1
@@ -69,6 +73,7 @@ public class GifViewModel: GifViewModelProtocol {
                     snapshot.appendItems([cellData], toSection: .grid)
                 }
             }
+            print(snapshot.itemIdentifiers)
             return snapshot
         }.eraseToAnyPublisher()
         

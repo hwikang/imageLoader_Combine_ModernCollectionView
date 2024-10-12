@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class GifViewController: UIViewController {
     private let viewModel: GifViewModelProtocol
+    private var cancellables = Set<AnyCancellable>()
+    private var dataSource: UICollectionViewDiffableDataSource<Section, CellData>?
     private let searchTextField = SearchTextField()
-
+    private lazy var collectionView = {
+        let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
+            self?.dataSource?.sectionIdentifier(for: index)?.layoutSize
+        }
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: GifCollectionViewCell.id)
+        collectionView.keyboardDismissMode = .onDrag
+        return collectionView
+    }()
     init(viewModel: GifViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -18,26 +29,51 @@ class GifViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .red
         setUI()
+        setDatasource()
+        bindViewModel()
+    }
+    private func bindViewModel() {
+        let output = viewModel.transform(input: GifViewModel.Input(searchText: searchTextField.textPublisher.debounce(for: 0.3, scheduler: DispatchQueue.main).eraseToAnyPublisher(), loadMore: Just(()).eraseToAnyPublisher()))
+        
+        output.cellData
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] snapshot in
+            self?.dataSource?.apply(snapshot)
+        }.store(in: &cancellables)
+    }
+    private func setDatasource() {
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemIdentifier.id, for: indexPath)
+            (cell as? GifCellProtocol)?.apply(cellData: itemIdentifier)
+//            switch itemIdentifier {
+//            case let .gifCell(data):
+//                
+//            }
+            return cell
+        })
     }
     
     private func setUI() {
-        [searchTextField].forEach {
+        [searchTextField, collectionView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         setConstraints()
     }
-    
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
+            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             searchTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchTextField.heightAnchor.constraint(equalToConstant: 44),
-           
+            
+            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
             
         ])
                
