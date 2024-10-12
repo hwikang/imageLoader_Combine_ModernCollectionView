@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GIFData: Decodable {
+public struct GIFData: Decodable, Hashable {
     let id: String
     let username: String
     let title: String
@@ -15,7 +15,7 @@ struct GIFData: Decodable {
     let previewURLString: String
     var isFavorite: Bool = false
     
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.username = try container.decode(String.self, forKey: .username)

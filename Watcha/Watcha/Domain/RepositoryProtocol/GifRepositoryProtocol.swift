@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol GifRepositoryProtocol {
-    func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
+    func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
     func getFavoriteIDList() -> [String]
     func appendFavoriteID(id: String)
     func removeFavoriteID(id: String)

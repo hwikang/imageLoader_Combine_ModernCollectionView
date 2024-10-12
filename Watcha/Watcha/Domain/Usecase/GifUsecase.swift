@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GifUsecaseProtocol {
-    func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
+    func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
     func getFavoriteIDList() -> [String]
     func appendFavoriteID(id: String)
     func removeFavoriteID(id: String)
@@ -21,8 +21,8 @@ public struct GifUsecase {
         self.repository = repository
     }
     
-    func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
-        await repository.fetchDutchResult(query: query, limit: limit, offset: offset)
+    func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
+        await repository.fetchGifData(query: query, limit: limit, offset: offset)
     }
     
     func getFavoriteIDList() -> [String] {

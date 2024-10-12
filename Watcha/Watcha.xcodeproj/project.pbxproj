@@ -27,6 +27,8 @@
 		F809E1162CB95E66001BE099 /* GifRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1152CB95E66001BE099 /* GifRepositoryProtocol.swift */; };
 		F809E1192CB95E9D001BE099 /* GifUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1182CB95E9D001BE099 /* GifUsecase.swift */; };
 		F809E11C2CB9609B001BE099 /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */; };
+		F809E1212CBA1FE8001BE099 /* GifViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1202CBA1FE8001BE099 /* GifViewModel.swift */; };
+		F809E1242CBA2F24001BE099 /* GifCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1232CBA2F24001BE099 /* GifCellData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		F809E1152CB95E66001BE099 /* GifRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F809E1182CB95E9D001BE099 /* GifUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifUsecase.swift; sourceTree = "<group>"; };
 		F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValues.swift; sourceTree = "<group>"; };
+		F809E1202CBA1FE8001BE099 /* GifViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewModel.swift; sourceTree = "<group>"; };
+		F809E1232CBA2F24001BE099 /* GifCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				F809E0CE2CB94D83001BE099 /* AppDelegate.swift */,
 				F809E0D02CB94D83001BE099 /* SceneDelegate.swift */,
 				F809E0D22CB94D83001BE099 /* ViewController.swift */,
+				F809E11D2CBA1FCE001BE099 /* Presentation */,
 				F809E1052CB9501A001BE099 /* Domain */,
 				F809E1012CB94F6A001BE099 /* Data */,
 				F809E0FE2CB94F35001BE099 /* Extension */,
@@ -230,6 +235,39 @@
 				F809E11B2CB9609B001BE099 /* UserDefaultValues.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		F809E11D2CBA1FCE001BE099 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1222CBA2F07001BE099 /* View */,
+				F809E11F2CBA1FE0001BE099 /* ViewModel */,
+				F809E11E2CBA1FD4001BE099 /* ViewController */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F809E11E2CBA1FD4001BE099 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F809E11F2CBA1FE0001BE099 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1202CBA1FE8001BE099 /* GifViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F809E1222CBA2F07001BE099 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1232CBA2F24001BE099 /* GifCellData.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,11 +409,13 @@
 				F809E10A2CB950E5001BE099 /* GifNetwork.swift in Sources */,
 				F809E1042CB94FC2001BE099 /* NetworkManager.swift in Sources */,
 				F809E1192CB95E9D001BE099 /* GifUsecase.swift in Sources */,
+				F809E1212CBA1FE8001BE099 /* GifViewModel.swift in Sources */,
 				F809E1082CB9502C001BE099 /* NetworkError.swift in Sources */,
 				F809E0CF2CB94D83001BE099 /* AppDelegate.swift in Sources */,
 				F809E10E2CB958C6001BE099 /* GifData.swift in Sources */,
 				F809E1162CB95E66001BE099 /* GifRepositoryProtocol.swift in Sources */,
 				F809E0D12CB94D83001BE099 /* SceneDelegate.swift in Sources */,
+				F809E1242CBA2F24001BE099 /* GifCellData.swift in Sources */,
 				F809E11C2CB9609B001BE099 /* UserDefaultValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

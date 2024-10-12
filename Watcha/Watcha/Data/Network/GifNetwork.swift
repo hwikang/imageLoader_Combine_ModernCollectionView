@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol GifNetworkProtocol {
-    func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
+    func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError>
 }
 
 public struct GifNetwork: GifNetworkProtocol {
@@ -18,7 +18,7 @@ public struct GifNetwork: GifNetworkProtocol {
         self.manager = manager
     }
 
-    public func fetchDutchResult(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
+    public func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
         guard let apiKey = Bundle.main.apiKey else { return .failure(.requestFailed("API Key nil"))}
         
         let url = baseURL
