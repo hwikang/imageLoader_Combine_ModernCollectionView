@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import Combine
 
 final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     static let id = "GifCollectionViewCell"
+    public var onTapFavorite: (() -> Void)?
     private let gifImageView = UIImageView()
-    public let favoriteButton = {
-          let button = UIButton()
-          button.setImage(.init(systemName: "heart"), for: .normal)
-          button.setImage(.init(systemName: "heart.fill"), for: .selected)
-          button.tintColor = .systemRed
-          return button
-      }()
+    
+    private let favoriteButton = {
+        let button = UIButton()
+        button.setImage(.init(systemName: "heart"), for: .normal)
+        button.setImage(.init(systemName: "heart.fill"), for: .selected)
+        button.tintColor = .systemRed
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +39,12 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
         gifImageView.backgroundColor = .systemGray
         gifImageView.layer.cornerRadius = 12
         gifImageView.clipsToBounds = true
+        favoriteButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         setConstraints()
+    }
+    
+    @objc private func clearButtonTapped() {
+        onTapFavorite?()
     }
     
     private func setConstraints() {

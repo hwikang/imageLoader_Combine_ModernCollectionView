@@ -19,7 +19,7 @@ public class GifViewModel: GifViewModelProtocol {
     private var offset = 0
     private var pageFinished = false
     private let query = CurrentValueSubject<String, Never>("")
-    private let gifDataList = PassthroughSubject<[GIFData], Never>()
+    private let gifDataList = CurrentValueSubject<[GIFData], Never>([])
     private let errorMessage = PassthroughSubject<String,Never>()
     private var cancellables = Set<AnyCancellable>()
 
@@ -27,13 +27,15 @@ public class GifViewModel: GifViewModelProtocol {
         self.usecase = usecase
     }
     struct Input {
-       let searchText: AnyPublisher<String,Never>
-       let loadMore: AnyPublisher<Void,Never>
-   }
+        let addFavorite: AnyPublisher<String, Never>
+        let deleteFavorite: AnyPublisher<String, Never>
+        let searchText: AnyPublisher<String,Never>
+        let loadMore: AnyPublisher<Void,Never>
+    }
     struct Output {
         let cellData: AnyPublisher<NSDiffableDataSourceSnapshot<Section, CellData>, Never>
         let errorMessage: AnyPublisher<String,Never>
-
+        
     }
     
     func transform(input: Input) -> Output {
@@ -59,6 +61,21 @@ public class GifViewModel: GifViewModelProtocol {
                 await self.fetchGifData(query: query, offset: self.offset)
             }
         }.store(in: &cancellables)
+        
+        input.addFavorite.sink { [weak self] id in
+            guard let self = self else { return }
+            usecase.appendFavoriteID(id: id)
+            let checkedData = usecase.checkFavorite(dataList: gifDataList.value)
+            gifDataList.send(checkedData)
+        }.store(in: &cancellables)
+        
+        input.deleteFavorite.sink { [weak self] id in
+            guard let self = self else { return }
+            usecase.removeFavoriteID(id: id)
+            let checkedData = usecase.checkFavorite(dataList: gifDataList.value)
+            gifDataList.send(checkedData)
+        }.store(in: &cancellables)
+        
         
         let cellData = gifDataList.map { dataList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, CellData>()

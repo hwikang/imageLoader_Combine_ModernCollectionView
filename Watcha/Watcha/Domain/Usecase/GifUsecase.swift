@@ -41,9 +41,7 @@ public struct GifUsecase: GifUsecaseProtocol {
         let favorite = Set(repository.getFavoriteIDList())
         return dataList.map { data in
             var data = data
-            if favorite.contains(data.id) {
-                data.isFavorite = true
-            }
+            data.isFavorite = favorite.contains(data.id)
             return data
         }
     }
