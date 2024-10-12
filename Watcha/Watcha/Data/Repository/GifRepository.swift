@@ -7,26 +7,26 @@
 
 import Foundation
 
-public struct GifRepository {
+public struct GifRepository: GifRepositoryProtocol {
     private let network: GifNetworkProtocol
     init(network: GifNetworkProtocol) {
         self.network = network
     }
-    func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
+    public func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
         await network.fetchGifData(query: query, limit: limit, offset: offset)
     }
     
-    func getFavoriteIDList() -> [String] {
+    public func getFavoriteIDList() -> [String] {
         return UserDefaultValues.favoriteIDList ?? []
     }
     
-    func appendFavoriteID(id: String) {
+    public func appendFavoriteID(id: String) {
         var list = UserDefaultValues.favoriteIDList ?? []
         list.append(id)
         UserDefaultValues.favoriteIDList = list
     }
     
-    func removeFavoriteID(id: String) {
+    public func removeFavoriteID(id: String) {
         var list = UserDefaultValues.favoriteIDList ?? []
         list.removeAll {$0 == id}
         UserDefaultValues.favoriteIDList = list

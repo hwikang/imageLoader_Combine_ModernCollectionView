@@ -15,7 +15,7 @@ protocol GifUsecaseProtocol {
     func checkFavorite(dataList: [GIFData]) -> [GIFData]
 }
 
-public struct GifUsecase {
+public struct GifUsecase: GifUsecaseProtocol {
     private let repository: GifRepositoryProtocol
     init(repository: GifRepositoryProtocol) {
         self.repository = repository
