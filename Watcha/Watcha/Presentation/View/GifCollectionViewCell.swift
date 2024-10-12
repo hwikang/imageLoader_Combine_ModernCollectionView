@@ -23,6 +23,11 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
         setUI()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gifImageView.stopGif()
+    }
+    
     private func setUI() {
         [gifImageView, favoriteButton].forEach {
             contentView.addSubview($0)
@@ -35,14 +40,15 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     }
     
     private func setConstraints() {
+        let margin = frame.width * 0.03
         NSLayoutConstraint.activate([
           
             gifImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             gifImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             gifImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             gifImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            favoriteButton.topAnchor.constraint(equalTo: gifImageView.topAnchor, constant: 20),
-            favoriteButton.trailingAnchor.constraint(equalTo: gifImageView.trailingAnchor, constant: -20),
+            favoriteButton.topAnchor.constraint(equalTo: gifImageView.topAnchor, constant: margin),
+            favoriteButton.trailingAnchor.constraint(equalTo: gifImageView.trailingAnchor, constant: -margin),
             favoriteButton.widthAnchor.constraint(equalToConstant: 40),
             favoriteButton.heightAnchor.constraint(equalToConstant: 40)
             
@@ -55,6 +61,7 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
             return
         }
         favoriteButton.isSelected =  gifData.isFavorite
+        gifImageView.setGifFromUrl(urlString: gifData.previewURLString)
        
     }
     

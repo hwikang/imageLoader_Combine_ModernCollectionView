@@ -46,10 +46,7 @@ class GifViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemIdentifier.id, for: indexPath)
             (cell as? GifCellProtocol)?.apply(cellData: itemIdentifier)
-//            switch itemIdentifier {
-//            case let .gifCell(data):
-//                
-//            }
+
             return cell
         })
     }
@@ -69,7 +66,7 @@ class GifViewController: UIViewController {
             searchTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             searchTextField.heightAnchor.constraint(equalToConstant: 44),
             
-            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

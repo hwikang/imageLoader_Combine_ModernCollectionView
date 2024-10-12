@@ -15,7 +15,7 @@ protocol GifViewModelProtocol {
 
 public class GifViewModel: GifViewModelProtocol {
     private let usecase: GifUsecaseProtocol
-    private let limit = 20
+    private let limit = 50
     private var offset = 0
     private var pageFinished = false
     private let query = CurrentValueSubject<String, Never>("")
@@ -73,7 +73,6 @@ public class GifViewModel: GifViewModelProtocol {
                     snapshot.appendItems([cellData], toSection: .grid)
                 }
             }
-            print(snapshot.itemIdentifiers)
             return snapshot
         }.eraseToAnyPublisher()
         
