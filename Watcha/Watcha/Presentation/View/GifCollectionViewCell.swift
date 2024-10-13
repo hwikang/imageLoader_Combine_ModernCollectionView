@@ -35,7 +35,7 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        gifImageView.stopGif()
+        gifImageView.image = nil
     }
     
     private func setUI() {
@@ -79,7 +79,7 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
             return
         }
         favoriteButton.isSelected =  gifData.isFavorite
-        gifImageView.setGifFromUrl(urlString: gifData.previewURLString)
+        gifImageView.setImage(urlString: gifData.previewURLString)
        
     }
     

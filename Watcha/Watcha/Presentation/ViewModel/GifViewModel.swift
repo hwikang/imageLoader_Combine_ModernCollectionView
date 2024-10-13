@@ -17,7 +17,9 @@ public class GifViewModel: GifViewModelProtocol {
     private let usecase: GifUsecaseProtocol
     private let limit = 50
     private var offset = 0
-    private var pageFinished = false
+
+    private let pageFinished = CurrentValueSubject<Bool, Never>(false)
+
     private let query = CurrentValueSubject<String, Never>("")
     private let gifDataList = CurrentValueSubject<[GIFData], Never>([])
     private let errorMessage = PassthroughSubject<String,Never>()
@@ -43,16 +45,21 @@ public class GifViewModel: GifViewModelProtocol {
         input.searchText
             .filter({ !$0.isEmpty })
             .compactMap { $0.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)}
+            .handleEvents(receiveOutput: { [weak self] query in
+                self?.gifDataList.send([])
+                self?.query.send(query)
+                self?.offset = 0
+            })
             .sink { [weak self] query in
                 guard let self = self else { return }
-                self.query.send(query)
-                offset = 0
+                
                 Task {
                     await self.fetchGifData(query: query, offset: self.offset)
                 }
             }.store(in: &cancellables)
         
         input.loadMore
+            .filter { [weak self] _ in self?.pageFinished.value == false }
             .map { [weak self] in self?.query.value }
             .map({ $0 ?? "" })
             .sink { [weak self] query in
@@ -105,8 +112,12 @@ public class GifViewModel: GifViewModelProtocol {
         switch result {
         case .success(let success):
             let checkedData = usecase.checkFavorite(dataList: success.data)
-            gifDataList.send(checkedData)
-            pageFinished = success.pagination.count < limit
+            if offset == 0 {
+                gifDataList.send(checkedData)
+            } else {
+                gifDataList.send(gifDataList.value + checkedData)
+            }
+            pageFinished.send(success.pagination.count < limit)
         case .failure(let failure):
             errorMessage.send(failure.description)
         }

@@ -13,7 +13,8 @@ class GifViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private let addFavorite = PassthroughSubject<String,Never>()
     private let deleteFavorite = PassthroughSubject<String,Never>()
-    
+    private let loadMore = PassthroughSubject<Void,Never>()
+
     private var dataSource: UICollectionViewDiffableDataSource<Section, CellData>?
     private let searchTextField = SearchTextField()
     private lazy var collectionView = {
@@ -23,6 +24,7 @@ class GifViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: GifCollectionViewCell.id)
         collectionView.keyboardDismissMode = .onDrag
+        collectionView.delegate = self
         return collectionView
     }()
     init(viewModel: GifViewModelProtocol) {
@@ -51,7 +53,10 @@ class GifViewController: UIViewController {
     private func bindViewModel() {
         let output = viewModel.transform(input: GifViewModel.Input(
             addFavorite: addFavorite.eraseToAnyPublisher(), deleteFavorite: deleteFavorite.eraseToAnyPublisher(),
-            searchText: searchTextField.textPublisher.debounce(for: 0.3, scheduler: DispatchQueue.main).eraseToAnyPublisher(), loadMore: Just(()).eraseToAnyPublisher()))
+            searchText: searchTextField.textPublisher.debounce(for: 0.3, scheduler: DispatchQueue.main).eraseToAnyPublisher(),
+            loadMore: loadMore
+                .debounce(for: 0.3, scheduler: DispatchQueue.main)
+                .eraseToAnyPublisher()))
         
         output.cellData
             .receive(on: DispatchQueue.main)
@@ -69,6 +74,7 @@ class GifViewController: UIViewController {
             .store(in: &cancellables)
         
     }
+    
     private func setDatasource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemIdentifier.id, for: indexPath)
@@ -125,4 +131,16 @@ class GifViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension GifViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let snapshot = dataSource?.snapshot() else { return }
+        print(indexPath.row)
+        print(snapshot.numberOfItems - 12)
+        if indexPath.row == snapshot.numberOfItems - 12 {
+            loadMore.send(())
+        }
+    }
+
 }
