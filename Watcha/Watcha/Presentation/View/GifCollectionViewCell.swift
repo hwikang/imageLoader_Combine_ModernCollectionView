@@ -12,6 +12,7 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     static let id = "GifCollectionViewCell"
     public var onTapFavorite: (() -> Void)?
     public var onTapImage: (() -> Void)?
+    private var dataTask: URLSessionDataTask?
     private let gifImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 12
@@ -36,6 +37,7 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     override func prepareForReuse() {
         super.prepareForReuse()
         gifImageView.image = nil
+        dataTask?.cancel()
     }
     
     private func setUI() {
@@ -79,7 +81,9 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
             return
         }
         favoriteButton.isSelected =  gifData.isFavorite
-        gifImageView.setImage(urlString: gifData.previewURLString)
+        gifImageView.setImage(urlString: gifData.previewURLString) { [weak self] dataTask in
+            self?.dataTask = dataTask
+        }
        
     }
     

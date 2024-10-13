@@ -8,7 +8,8 @@
 import UIKit
 
 extension UIImageView {
-    func setImage(urlString: String) {
+
+    func setImage(urlString: String, completion: @escaping (URLSessionDataTask?) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
         if let cachedImage = ImageCacheManager.shared.image(forKey: url as NSURL) {
@@ -19,7 +20,7 @@ extension UIImageView {
         }
         DispatchQueue.global(qos: .background).async { [weak self] in
             if let url = URL(string: urlString) {
-                URLSession.shared.dataTask(with: url) { data, response, error in
+                let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
                     guard let data = data, let downloadedImage = UIImage(data: data) else { return }
                     var finalImage = downloadedImage
                     
@@ -36,7 +37,12 @@ extension UIImageView {
                         self?.image = finalImage
                     }
                     ImageCacheManager.shared.setImage(finalImage, forKey: url as NSURL)
-                }.resume()
+                }
+                dataTask.resume()
+                            
+                DispatchQueue.main.async {
+                    completion(dataTask)
+                }
             }
         }
     }
