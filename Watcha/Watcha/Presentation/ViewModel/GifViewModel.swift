@@ -42,6 +42,7 @@ public class GifViewModel: GifViewModelProtocol {
       
         input.searchText
             .filter({ !$0.isEmpty })
+            .compactMap { $0.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)}
             .sink { [weak self] query in
                 guard let self = self else { return }
                 self.query.send(query)
@@ -77,7 +78,9 @@ public class GifViewModel: GifViewModelProtocol {
         }.store(in: &cancellables)
         
         
-        let cellData = gifDataList.map { dataList in
+        let cellData = gifDataList
+            .dropFirst()
+            .map { dataList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, CellData>()
             snapshot.appendSections([.main, .carousel, .grid])
             dataList.enumerated().forEach { index, data in

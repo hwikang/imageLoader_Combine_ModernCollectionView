@@ -22,6 +22,7 @@ public struct GifUsecase: GifUsecaseProtocol {
     }
     
     func fetchGifData(query: String, limit: Int, offset: Int) async -> Result<SearchResult, NetworkError> {
+        
         await repository.fetchGifData(query: query, limit: limit, offset: offset)
     }
     

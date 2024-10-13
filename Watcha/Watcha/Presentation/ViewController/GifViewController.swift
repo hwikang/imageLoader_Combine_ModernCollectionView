@@ -36,6 +36,18 @@ class GifViewController: UIViewController {
         setDatasource()
         bindViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     private func bindViewModel() {
         let output = viewModel.transform(input: GifViewModel.Input(
             addFavorite: addFavorite.eraseToAnyPublisher(), deleteFavorite: deleteFavorite.eraseToAnyPublisher(),
@@ -46,6 +58,16 @@ class GifViewController: UIViewController {
             .sink { [weak self] snapshot in
                 self?.dataSource?.apply(snapshot)
             }.store(in: &cancellables)
+        
+        output.errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorMessage in
+                let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(.init(title: "확인", style: .default))
+                self?.present(alert, animated: true)
+            }
+            .store(in: &cancellables)
+        
     }
     private func setDatasource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
@@ -58,6 +80,9 @@ class GifViewController: UIViewController {
                     } else {
                         self?.addFavorite.send(data.id)
                     }
+                }
+                cell.onTapImage = {
+                    self?.pushGifDetailVC(urlString: data.originalURLString, id: data.id)
                 }
             }
             return cell
@@ -84,14 +109,20 @@ class GifViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            
         ])
         
     }
     
+    private func pushGifDetailVC(urlString: String, id: String) {
+        let detailRP = GifRepository(network: GifNetwork(manager: NetworkManager(session: URLSession.shared)))
+        let detailUC = GifUsecase(repository: detailRP)
+        let detailVM = GifDetailViewModel(usecase: detailUC, gifID: id)
+        let detailVC = GifDetailViewController(viewModel: detailVM, urlString: urlString)
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let gifUC = GifUsecase(repository: gifRP)
         let gifVM = GifViewModel(usecase: gifUC)
         let gifVC = GifViewController(viewModel: gifVM)
-        window?.rootViewController = gifVC
+        let gifNC = UINavigationController(rootViewController: gifVC)
+        window?.rootViewController = gifNC
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }

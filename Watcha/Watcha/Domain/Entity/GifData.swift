@@ -15,6 +15,14 @@ public struct GIFData: Decodable, Hashable {
     let previewURLString: String
     var isFavorite: Bool = false
     
+    init(id: String, username: String, title: String, originalURLString: String, previewURLString: String) {
+        self.id = id
+        self.username = username
+        self.title = title
+        self.originalURLString = originalURLString
+        self.previewURLString = previewURLString
+    }
+
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)

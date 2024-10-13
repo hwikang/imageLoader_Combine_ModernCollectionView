@@ -11,7 +11,6 @@
 		F809E0D12CB94D83001BE099 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0D02CB94D83001BE099 /* SceneDelegate.swift */; };
 		F809E0D32CB94D83001BE099 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0D22CB94D83001BE099 /* GifViewController.swift */; };
 		F809E0D82CB94D84001BE099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F809E0D72CB94D84001BE099 /* Assets.xcassets */; };
-		F809E0E62CB94D85001BE099 /* WatchaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0E52CB94D85001BE099 /* WatchaTests.swift */; };
 		F809E0F02CB94D85001BE099 /* WatchaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0EF2CB94D85001BE099 /* WatchaUITests.swift */; };
 		F809E0F22CB94D85001BE099 /* WatchaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0F12CB94D85001BE099 /* WatchaUITestsLaunchTests.swift */; };
 		F809E1002CB94F42001BE099 /* Extension + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E0FF2CB94F42001BE099 /* Extension + Bundle.swift */; };
@@ -32,6 +31,14 @@
 		F809E1542CBA4572001BE099 /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1532CBA4572001BE099 /* GifCollectionViewCell.swift */; };
 		F809E1572CBA552F001BE099 /* GifCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1562CBA552F001BE099 /* GifCacheManager.swift */; };
 		F809E1592CBA5593001BE099 /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1582CBA5593001BE099 /* Extension + UIImageView.swift */; };
+		F809E15C2CBBCF93001BE099 /* GifNetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E15B2CBBCF93001BE099 /* GifNetworkTest.swift */; };
+		F809E15F2CBBD081001BE099 /* MockGifNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E15E2CBBD081001BE099 /* MockGifNetwork.swift */; };
+		F809E1642CBBD5B6001BE099 /* MockGifRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1632CBBD5B6001BE099 /* MockGifRepository.swift */; };
+		F809E1662CBBD5EF001BE099 /* GifUsecaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1652CBBD5EF001BE099 /* GifUsecaseTest.swift */; };
+		F809E1692CBBD814001BE099 /* GifViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E1682CBBD814001BE099 /* GifViewModelTest.swift */; };
+		F809E16B2CBBD82F001BE099 /* MockGifUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E16A2CBBD82F001BE099 /* MockGifUsecase.swift */; };
+		F809E16D2CBBE0E7001BE099 /* GifDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E16C2CBBE0E7001BE099 /* GifDetailViewController.swift */; };
+		F809E16F2CBBE1C8001BE099 /* GifDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809E16E2CBBE1C8001BE099 /* GifDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +66,6 @@
 		F809E0D72CB94D84001BE099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F809E0DC2CB94D84001BE099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F809E0E12CB94D85001BE099 /* WatchaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F809E0E52CB94D85001BE099 /* WatchaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchaTests.swift; sourceTree = "<group>"; };
 		F809E0EB2CB94D85001BE099 /* WatchaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F809E0EF2CB94D85001BE099 /* WatchaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchaUITests.swift; sourceTree = "<group>"; };
 		F809E0F12CB94D85001BE099 /* WatchaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -81,6 +87,14 @@
 		F809E1532CBA4572001BE099 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 		F809E1562CBA552F001BE099 /* GifCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCacheManager.swift; sourceTree = "<group>"; };
 		F809E1582CBA5593001BE099 /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
+		F809E15B2CBBCF93001BE099 /* GifNetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifNetworkTest.swift; sourceTree = "<group>"; };
+		F809E15E2CBBD081001BE099 /* MockGifNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGifNetwork.swift; sourceTree = "<group>"; };
+		F809E1632CBBD5B6001BE099 /* MockGifRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGifRepository.swift; sourceTree = "<group>"; };
+		F809E1652CBBD5EF001BE099 /* GifUsecaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifUsecaseTest.swift; sourceTree = "<group>"; };
+		F809E1682CBBD814001BE099 /* GifViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewModelTest.swift; sourceTree = "<group>"; };
+		F809E16A2CBBD82F001BE099 /* MockGifUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGifUsecase.swift; sourceTree = "<group>"; };
+		F809E16C2CBBE0E7001BE099 /* GifDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewController.swift; sourceTree = "<group>"; };
+		F809E16E2CBBE1C8001BE099 /* GifDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +162,10 @@
 		F809E0E42CB94D85001BE099 /* WatchaTests */ = {
 			isa = PBXGroup;
 			children = (
-				F809E0E52CB94D85001BE099 /* WatchaTests.swift */,
+				F809E1672CBBD7F3001BE099 /* Presentation */,
+				F809E1602CBBD0AF001BE099 /* Domain */,
+				F809E15D2CBBD06A001BE099 /* Mock */,
+				F809E15A2CBBCF88001BE099 /* Data */,
 			);
 			path = WatchaTests;
 			sourceTree = "<group>";
@@ -257,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				F809E0D22CB94D83001BE099 /* GifViewController.swift */,
+				F809E16C2CBBE0E7001BE099 /* GifDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -265,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				F809E1202CBA1FE8001BE099 /* GifViewModel.swift */,
+				F809E16E2CBBE1C8001BE099 /* GifDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -285,6 +304,40 @@
 				F809E1562CBA552F001BE099 /* GifCacheManager.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		F809E15A2CBBCF88001BE099 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F809E15B2CBBCF93001BE099 /* GifNetworkTest.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F809E15D2CBBD06A001BE099 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F809E15E2CBBD081001BE099 /* MockGifNetwork.swift */,
+				F809E1632CBBD5B6001BE099 /* MockGifRepository.swift */,
+				F809E16A2CBBD82F001BE099 /* MockGifUsecase.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		F809E1602CBBD0AF001BE099 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1652CBBD5EF001BE099 /* GifUsecaseTest.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F809E1672CBBD7F3001BE099 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F809E1682CBBD814001BE099 /* GifViewModelTest.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +482,7 @@
 				F809E12A2CBA3815001BE099 /* Extension + UITextField.swift in Sources */,
 				F809E1212CBA1FE8001BE099 /* GifViewModel.swift in Sources */,
 				F809E1082CB9502C001BE099 /* NetworkError.swift in Sources */,
+				F809E16F2CBBE1C8001BE099 /* GifDetailViewModel.swift in Sources */,
 				F809E0CF2CB94D83001BE099 /* AppDelegate.swift in Sources */,
 				F809E10E2CB958C6001BE099 /* GifData.swift in Sources */,
 				F809E1162CB95E66001BE099 /* GifRepositoryProtocol.swift in Sources */,
@@ -436,6 +490,7 @@
 				F809E0D12CB94D83001BE099 /* SceneDelegate.swift in Sources */,
 				F809E1242CBA2F24001BE099 /* GifCellData.swift in Sources */,
 				F809E11C2CB9609B001BE099 /* UserDefaultValues.swift in Sources */,
+				F809E16D2CBBE0E7001BE099 /* GifDetailViewController.swift in Sources */,
 				F809E1262CBA30E8001BE099 /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +499,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F809E0E62CB94D85001BE099 /* WatchaTests.swift in Sources */,
+				F809E16B2CBBD82F001BE099 /* MockGifUsecase.swift in Sources */,
+				F809E15C2CBBCF93001BE099 /* GifNetworkTest.swift in Sources */,
+				F809E15F2CBBD081001BE099 /* MockGifNetwork.swift in Sources */,
+				F809E1662CBBD5EF001BE099 /* GifUsecaseTest.swift in Sources */,
+				F809E1692CBBD814001BE099 /* GifViewModelTest.swift in Sources */,
+				F809E1642CBBD5B6001BE099 /* MockGifRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

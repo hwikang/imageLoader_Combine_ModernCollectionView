@@ -11,7 +11,14 @@ import Combine
 final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
     static let id = "GifCollectionViewCell"
     public var onTapFavorite: (() -> Void)?
-    private let gifImageView = UIImageView()
+    public var onTapImage: (() -> Void)?
+    private let gifImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
     
     private let favoriteButton = {
         let button = UIButton()
@@ -36,14 +43,17 @@ final class GifCollectionViewCell: UICollectionViewCell, GifCellProtocol {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        gifImageView.backgroundColor = .systemGray
-        gifImageView.layer.cornerRadius = 12
-        gifImageView.clipsToBounds = true
-        favoriteButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        gifImageView.addGestureRecognizer(tapGesture)
         setConstraints()
     }
     
-    @objc private func clearButtonTapped() {
+    @objc private func imageTapped() {
+        onTapImage?()
+    }
+    
+    @objc private func favoriteButtonTapped() {
         onTapFavorite?()
     }
     
