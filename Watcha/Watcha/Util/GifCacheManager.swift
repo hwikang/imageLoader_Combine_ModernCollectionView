@@ -10,7 +10,7 @@ import UIKit
 class GifCacheManager {
     static let shared = GifCacheManager()
     private init() {
-        cache.totalCostLimit = 200 * 1024 * 1024 // 200MB
+        cache.totalCostLimit = 100 * 1024 * 1024 // 200MB
 
     }
 

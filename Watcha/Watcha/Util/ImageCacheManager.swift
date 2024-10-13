@@ -10,7 +10,7 @@ import UIKit
 class ImageCacheManager {
     static let shared = ImageCacheManager()
     private init() {
-        cache.totalCostLimit = 200 * 1024 * 1024 // 50MB
+        cache.totalCostLimit = 50 * 1024 * 1024 // 50MB
     }
 
     private let cache = NSCache<NSURL, UIImage>()

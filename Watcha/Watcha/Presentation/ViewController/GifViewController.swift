@@ -136,8 +136,6 @@ class GifViewController: UIViewController {
 extension GifViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let snapshot = dataSource?.snapshot() else { return }
-        print(indexPath.row)
-        print(snapshot.numberOfItems - 12)
         if indexPath.row == snapshot.numberOfItems - 12 {
             loadMore.send(())
         }

@@ -26,7 +26,7 @@ extension UIImageView {
                     let maxSize = 500000 //500KB
                     if data.count > maxSize {
                         let compressionRatio = CGFloat(maxSize) / CGFloat(data.count)
-                        let compressionQuality = max(min(compressionRatio, 1.0), 0.1) 
+                        let compressionQuality = max(min(compressionRatio, 1.0), 0.1)
                         if let compressedData = downloadedImage.jpegData(compressionQuality: compressionQuality) {
                             finalImage = UIImage(data: compressedData) ?? downloadedImage
                         }
@@ -40,6 +40,7 @@ extension UIImageView {
             }
         }
     }
+    
     func setGifFromUrl(urlString: String) {
         guard let url = URL(string: urlString) else { return }
         
